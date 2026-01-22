@@ -512,7 +512,6 @@
   function stopReading() {
     window.TTS.stop();
     updateUI('stopped');
-    // clearHighlight();
   }
 
   /**
