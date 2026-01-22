@@ -1,0 +1,522 @@
+/**
+ * Read Aloud - Floating Player Styles
+ *
+ * @author groverception (https://github.com/groverception)
+ * @license MIT
+ * @repository https://github.com/groverception/read-aloud
+ */
+
+#read-aloud-player {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 320px;
+  max-height: 80vh;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(0, 0, 0, 0.05);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  z-index: 999999;
+  overflow: hidden;
+  transition: box-shadow 0.2s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+#read-aloud-player:hover {
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.18), 0 0 0 1px rgba(0, 0, 0, 0.08);
+}
+
+/* Header / Drag Handle */
+#read-aloud-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 12px;
+  background: #1d9bf0;
+  color: white;
+  cursor: move;
+  user-select: none;
+  flex-shrink: 0;
+}
+
+#read-aloud-header .title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  font-size: 13px;
+}
+
+#read-aloud-header .drag-icon {
+  opacity: 0.7;
+  font-size: 16px;
+}
+
+.read-aloud-header-btns {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+#read-aloud-close {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 2px 6px;
+  opacity: 0.8;
+  transition: opacity 0.2s;
+  line-height: 1;
+  border-radius: 4px;
+}
+
+#read-aloud-close:hover {
+  opacity: 1;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Transcript toggle button - bottom of content area */
+#read-aloud-transcript-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  width: 100%;
+  padding: 10px;
+  margin-top: 8px;
+  background: #f7f9fa;
+  border: 1px solid #e1e8ed;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #536471;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+#read-aloud-transcript-toggle:hover {
+  background: #e7e9ea;
+  color: #0f1419;
+}
+
+#read-aloud-transcript-toggle .toggle-icon {
+  font-size: 10px;
+}
+
+#read-aloud-transcript-toggle .toggle-text {
+  font-size: 12px;
+}
+
+/* Content Area */
+#read-aloud-content {
+  padding: 12px;
+  flex-shrink: 0;
+}
+
+/* Voice Selector */
+#read-aloud-voice-container {
+  margin-bottom: 12px;
+}
+
+#read-aloud-voice-container label {
+  display: block;
+  font-size: 11px;
+  color: #536471;
+  margin-bottom: 4px;
+  font-weight: 500;
+}
+
+#read-aloud-voice-select {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid #cfd9de;
+  border-radius: 8px;
+  font-size: 13px;
+  background: #ffffff;
+  color: #0f1419;
+  cursor: pointer;
+  outline: none;
+  transition: border-color 0.2s;
+  -webkit-appearance: none;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23536471' d='M6 8L2 4h8z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  padding-right: 30px;
+}
+
+#read-aloud-voice-select option {
+  background: #ffffff;
+  color: #0f1419;
+  padding: 8px;
+}
+
+#read-aloud-voice-select:hover {
+  border-color: #1d9bf0;
+}
+
+#read-aloud-voice-select:focus {
+  border-color: #1d9bf0;
+  box-shadow: 0 0 0 2px rgba(29, 155, 240, 0.2);
+}
+
+/* Speed Slider */
+#read-aloud-speed-container {
+  margin-bottom: 12px;
+}
+
+#read-aloud-speed-container label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 11px;
+  color: #536471;
+  margin-bottom: 6px;
+  font-weight: 500;
+}
+
+#read-aloud-speed-value {
+  font-weight: 600;
+  color: #1d9bf0;
+}
+
+#read-aloud-speed-slider {
+  width: 100%;
+  height: 6px;
+  -webkit-appearance: none;
+  appearance: none;
+  background: #e1e8ed;
+  border-radius: 3px;
+  outline: none;
+  cursor: pointer;
+}
+
+#read-aloud-speed-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  background: #1d9bf0;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: transform 0.1s, background 0.2s;
+}
+
+#read-aloud-speed-slider::-webkit-slider-thumb:hover {
+  transform: scale(1.1);
+  background: #1a8cd8;
+}
+
+#read-aloud-speed-slider::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  background: #1d9bf0;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+/* Controls */
+#read-aloud-controls {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+
+.read-aloud-btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 8px 10px;
+  border: none;
+  border-radius: 9999px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.1s;
+}
+
+.read-aloud-btn:active {
+  transform: scale(0.98);
+}
+
+.read-aloud-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+#read-aloud-play-btn {
+  background: #1d9bf0;
+  color: white;
+}
+
+#read-aloud-play-btn:hover:not(:disabled) {
+  background: #1a8cd8;
+}
+
+#read-aloud-play-btn.playing {
+  background: #f97316;
+}
+
+#read-aloud-play-btn.playing:hover:not(:disabled) {
+  background: #ea580c;
+}
+
+#read-aloud-stop-btn,
+#read-aloud-skip-btn {
+  background: #f7f9fa;
+  color: #0f1419;
+  border: 1px solid #cfd9de;
+  flex: 0.7;
+}
+
+#read-aloud-stop-btn:hover:not(:disabled),
+#read-aloud-skip-btn:hover:not(:disabled) {
+  background: #e7e9ea;
+}
+
+#read-aloud-skip-btn {
+  flex: 0.5;
+}
+
+/* Progress Indicator */
+#read-aloud-progress {
+  text-align: center;
+  font-size: 12px;
+  color: #536471;
+  padding: 6px 0;
+  border-top: 1px solid #eff3f4;
+}
+
+#read-aloud-progress.active {
+  color: #1d9bf0;
+  font-weight: 500;
+}
+
+/* Transcript Section */
+#read-aloud-transcript {
+  border-top: 1px solid #eff3f4;
+  max-height: 250px;
+  overflow-y: auto;
+  flex: 1;
+  min-height: 0;
+}
+
+#read-aloud-transcript.hidden {
+  display: none;
+}
+
+#read-aloud-transcript-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  background: #f7f9fa;
+  font-size: 11px;
+  font-weight: 600;
+  color: #536471;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+#read-aloud-transcript-content {
+  padding: 8px;
+}
+
+.transcript-paragraph {
+  padding: 8px 10px;
+  margin: 4px 0;
+  border-radius: 8px;
+  font-size: 13px;
+  line-height: 1.5;
+  color: #0f1419;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  border: 1px solid transparent;
+}
+
+.transcript-paragraph:hover {
+  background: #f7f9fa;
+}
+
+.transcript-paragraph.current {
+  background: rgba(29, 155, 240, 0.1);
+  border-color: rgba(29, 155, 240, 0.3);
+}
+
+.transcript-paragraph.current::before {
+  content: '';
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  background: #1d9bf0;
+  border-radius: 50%;
+  margin-right: 8px;
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+.transcript-paragraph-number {
+  display: inline-block;
+  font-size: 10px;
+  color: #8b98a5;
+  margin-right: 6px;
+  min-width: 20px;
+}
+
+/* Highlighted paragraph during reading */
+.read-aloud-highlight {
+  background-color: rgba(29, 155, 240, 0.1) !important;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+/* Minimized state */
+#read-aloud-player.minimized #read-aloud-content,
+#read-aloud-player.minimized #read-aloud-transcript {
+  display: none;
+}
+
+#read-aloud-player.minimized {
+  width: auto;
+}
+
+#read-aloud-player.minimized #read-aloud-header {
+  border-radius: 12px;
+}
+
+/* Scrollbar styling */
+#read-aloud-transcript::-webkit-scrollbar {
+  width: 6px;
+}
+
+#read-aloud-transcript::-webkit-scrollbar-track {
+  background: #f7f9fa;
+}
+
+#read-aloud-transcript::-webkit-scrollbar-thumb {
+  background: #cfd9de;
+  border-radius: 3px;
+}
+
+#read-aloud-transcript::-webkit-scrollbar-thumb:hover {
+  background: #8b98a5;
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  #read-aloud-player {
+    background: #16181c;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.1);
+  }
+
+  #read-aloud-voice-select {
+    background: #202327;
+    border-color: #38444d;
+    color: #e7e9ea;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%238b98a5' d='M6 8L2 4h8z'/%3E%3C/svg%3E");
+  }
+
+  #read-aloud-voice-select option {
+    background: #202327;
+    color: #e7e9ea;
+  }
+
+  #read-aloud-voice-container label,
+  #read-aloud-speed-container label {
+    color: #8b98a5;
+  }
+
+  #read-aloud-speed-slider {
+    background: #38444d;
+  }
+
+  #read-aloud-stop-btn,
+  #read-aloud-skip-btn {
+    background: #202327;
+    color: #e7e9ea;
+    border-color: #38444d;
+  }
+
+  #read-aloud-stop-btn:hover:not(:disabled),
+  #read-aloud-skip-btn:hover:not(:disabled) {
+    background: #2c3640;
+  }
+
+  #read-aloud-progress {
+    color: #8b98a5;
+    border-top-color: #38444d;
+  }
+
+  #read-aloud-transcript {
+    border-top-color: #38444d;
+  }
+
+  #read-aloud-transcript-header {
+    background: #202327;
+    color: #8b98a5;
+  }
+
+  .transcript-paragraph {
+    color: #e7e9ea;
+  }
+
+  .transcript-paragraph:hover {
+    background: #202327;
+  }
+
+  .transcript-paragraph.current {
+    background: rgba(29, 155, 240, 0.15);
+  }
+
+  .transcript-paragraph-number {
+    color: #6e767d;
+  }
+
+  #read-aloud-transcript::-webkit-scrollbar-track {
+    background: #202327;
+  }
+
+  #read-aloud-transcript::-webkit-scrollbar-thumb {
+    background: #38444d;
+  }
+
+  #read-aloud-transcript-toggle {
+    background: #202327;
+    border-color: #38444d;
+    color: #8b98a5;
+  }
+
+  #read-aloud-transcript-toggle:hover {
+    background: #2c3640;
+    color: #e7e9ea;
+  }
+}
+
+/* Animation for player appearing */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+#read-aloud-player {
+  animation: slideIn 0.3s ease-out;
+}

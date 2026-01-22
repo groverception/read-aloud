@@ -1,0 +1,41 @@
+{
+  "manifest_version": 3,
+  "name": "Read Aloud - X / Twitter Articles",
+  "version": "1.0.0",
+  "description": "Read Twitter/X articles aloud with natural voice",
+  "permissions": ["activeTab", "storage", "scripting"],
+  "host_permissions": ["*://x.com/*", "*://twitter.com/*"],
+  "background": {
+    "service_worker": "src/background/service-worker.js"
+  },
+  "content_scripts": [{
+    "matches": ["*://x.com/*", "*://twitter.com/*"],
+    "js": [
+      "src/utils/tts.js",
+      "src/content/articleParser.js",
+      "src/content/content.js"
+    ],
+    "css": ["src/content/content.css"]
+  }],
+  "action": {
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png"
+    },
+    "default_title": "Read Aloud - Read Twitter/X articles aloud with natural voice"
+  },
+  "commands": {
+    "toggle-reading": {
+      "suggested_key": {
+        "default": "Alt+R",
+        "mac": "Alt+R"
+      },
+      "description": "Start or pause reading"
+    }
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}
